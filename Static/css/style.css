@@ -1,0 +1,54 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
+}
+a{
+    text-decoration: none;
+}
+table{
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+}
+table tr {
+    display: -webkit-flex;
+}
+table th, table td{
+    border:1px solid #ccc;
+    font-size: 10px;
+    flex:1;
+}
+td span{
+    width: 28%;
+    height: 100%;
+    display: inline-block;
+}
+td span input{
+    width: 50%;
+}
+p span{
+    width: 20px;
+    height: 20px;
+    border:1px solid #ccc;
+    display: inline-block;
+    margin-left: 4px;
+    line-height: 20px;
+    font-size: 12px;
+    text-align: center;
+}
+p span.cur{
+    color:#fff;
+    background: skyblue;
+}
+p input{
+    width: 20px;
+    height: 20px;
+}
+td input[type = 'text']{
+    width: 100%;
+    height: 100%;
+    border:none;
+}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="Static/css/style.css">
+    <link rel="stylesheet" href="Static/fonts1/iconfont.css">
+</head>
+<body ng-app="app">
+    <div class="wrap" ng-controller="controller">
+        <span>登录名：<input type="text" ng-model="login"></span>
+        <span>姓名：<input type="text"  ng-model="names"></span>
+        <span>状态：<input type="text" ng-model="statu"></span>
+        <table>
+            <thead>
+                <tr>
+                    <th> 选择 </th>
+                    <th>登录名</th>
+                    <th>真实姓名</th>
+                    <th>状态</th>
+                    <th>QQ</th>
+                    <th>上线</th>
+                    <th>原定费率</th>
+                    <th>平台费率</th>
+                    <th>代理费率</th>
+                    <th>分割费率</th>
+                    <th>可用余版</th>
+                    <th>冻结金</th>
+                    <th> 操作 </th>
+                </tr>
+            </thead>
+            <tbody>
+                {{login}}
+                <tr ng-repeat="item in data| limitTo:num:index | filter: {'loginname':login,'name':names,'status':statu}">
+                    <td><input type="checkbox" ng-click="inpCheck($index)"></td>
+                    <td><input type="text" value="{{item.loginname}}"></td>
+                    <td><input type="text" value="{{item.name}}"></td>
+                    <td><input type="text" value="{{item.status.trim()}}"></td>
+                    <td><input type="text" value="{{item.QQ}}"></td>
+                    <td><input type="text" value="{{item.ji}}"></td>
+                    <td>{{item.yuan}}</td>
+                    <td>{{item.avg}}</td>
+                    <td>{{item.dai}}</td>
+                    <td>{{item.fen}}</td>
+                    <td>{{item.yu}}</td>
+                    <td>{{item.dong}}</td>
+                    <td>
+                        <span ng-click="write($index)">编辑</span>
+                        <span ng-click="remove($index)">删除</span>
+                        <span ng-click="cun($index)">保存</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>共{{data.data.length}}条数据<span ng-repeat="item in data|limitTo: pages" ng-click="change($index)" ng-class="{true: 'cur'}[item.flag]">{{$index + 1}}</span>前往<input type="text" ng-blur="pageChange(pag)" ng-model="pag">页</p>
+    </div>
+    <script src="Scripts/jquery-1.8.3.min.js"></script>
+    <script src="Scripts/angular/angular.js"></script>
+    <script src="Scripts/angular-ui-router/angular-ui-router.js"></script>
+    <script src="App/app.js"></script>
+    <script src="App/Server/ajax.js"></script>
+    <script src="App/Server/json.js"></script>
+    <script src="App/Controller/controller.js"></script>
+</body>
+</html>
